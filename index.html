@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para mi niña linda ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: radial-gradient(circle, #ffdee9 0%, #b5fffc 100%);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden;
+        }
+
+        .heart-fall {
+            position: absolute;
+            top: -5vh;
+            animation: fall linear forwards;
+            z-index: 1;
+        }
+
+        @keyframes fall {
+            to { transform: translateY(110vh) rotate(360deg); }
+        }
+
+        .container {
+            position: relative;
+            width: 95%;
+            max-width: 420px;
+            z-index: 10;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .envelope {
+            width: 280px;
+            height: 180px;
+            background: #ff4081;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 15px 40px rgba(255, 64, 129, 0.5);
+            border: 4px solid #fff;
+            transition: 0.5s;
+        }
+
+        .envelope h1 { font-family: 'Dancing Script', cursive; font-size: 2rem; }
+
+        .message-card {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            padding: 15px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            display: none;
+            z-index: 15;
+        }
+
+        .container.open .message-card { display: block; animation: zoomIn 0.5s ease; }
+        .container.open .envelope { display: none; }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        /* CUADRO PARA LAS 2 IMAGENES LADO A LADO */
+        .photo-row {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 12px;
+            justify-content: center;
+        }
+
+        .photo-row img {
+            width: 48%; 
+            height: 160px; /* Altura controlada para no deslizar */
+            object-fit: cover;
+            border-radius: 12px;
+            border: 2px solid #ff4081;
+        }
+
+        h2 { color: #ad1457; font-family: 'Dancing Script', cursive; font-size: 1.5rem; margin-bottom: 5px; }
+        p { color: #444; font-size: 0.85rem; line-height: 1.4; margin-bottom: 8px; }
+        
+        .name-tag {
+            font-weight: 600;
+            color: #ff4081;
+            border-top: 1px solid #ffdee9;
+            padding-top: 8px;
+            font-size: 0.8rem;
+        }
+
+        .close-btn {
+            margin-top: 8px;
+            font-size: 0.65rem;
+            color: #ad1457;
+            cursor: pointer;
+            background: #ffdee9;
+            padding: 4px 12px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" id="mainContainer">
+        <div class="envelope" onclick="toggleOpen()">
+            <h1>Para ti 🌸</h1>
+            <p style="font-size: 0.7rem;">Toca para abrir ✨</p>
+        </div>
+
+        <div class="message-card">
+            <div class="photo-row">
+                <img src="WhatsApp Image 2026-04-02 at 11.56.25 AM (1).jpeg" alt="Nosotros 1">
+                <img src="WhatsApp Image 2026-04-02 at 12.12.59 PM (3).jpeg" alt="Nosotros 2">
+            </div>
+            
+            <h2>¡Hola, mi amor! ❤️</h2>
+            
+            <p>Hoy queria decirte lo mucho que te amo . Agradesco mucho haberte preguntado por la tarea de matematica😅, que con eso empezo todo nuestra bonita historia y ahora en estos momentos ya vamos a llegar a cumplir 3 años de relación .</p>
+            
+            <p> Cada que estoy contigo me siemto muy pero muy feliz, me siento como un niño me siento muy afortunado de estar contigo.</p>
+            
+            <p><strong>Te amo mucho muchisimooooo .</strong></p>
+            
+            <p class="name-tag"> Para :"BLANCA ESTHEFANY MANTILLA HERMITAÑO ❤️"</p>
+            
+            <div class="close-btn" onclick="toggleOpen()">Cerrar x</div>
+        </div>
+    </div>
+
+    <script>
+        function createRain() {
+            const hearts = ['❤️', '💖', '💕', '✨'];
+            const heart = document.createElement('div');
+            heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+            heart.className = 'heart-fall';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.fontSize = Math.random() * 15 + 10 + 'px';
+            heart.style.animationDuration = Math.random() * 2 + 3 + 's';
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 5000);
+        }
+        setInterval(createRain, 200);
+
+        function toggleOpen() {
+            document.getElementById('mainContainer').classList.toggle('open');
+        }
+    </script>
+</body>
+</html>
